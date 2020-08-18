@@ -5,15 +5,11 @@
  * @format
  * @flow strict-local
  */
-
+import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
+import 'react-native-gesture-handler';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
 } from 'react-native';
 
 import {
@@ -23,52 +19,28 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { Provider } from 'react-redux';
+import { store} from '../ShoppingListAndriod/scr/core/redux/store';
+import {Layout} from './scr/components/layout/Layout';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import  {UpdateShoppingItem } from './scr/components/shopping-items/update-shopping-item/UpdateShoppingItem';
+import {ShoppingList} from './scr/components/shopping-items/shopping-list/ShoppingList';
 
-const App: () => React$Node = () => {
+const App = ()  => {
+  const Stack = createStackNavigator();
   return (
+    <Provider store={store}>
     <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+    <NavigationContainer>
+                <Stack.Navigator initialRouteName="List">
+                    <Stack.Screen name="List" component={ShoppingList} options={{ title: 'Shopping List' }}></Stack.Screen>
+                    <Stack.Screen name="Update" component={UpdateShoppingItem} options={{ title: 'Update Item' }}></Stack.Screen>
+                </Stack.Navigator>
+    </NavigationContainer>
     </>
+    </Provider>
+    
   );
 };
 
