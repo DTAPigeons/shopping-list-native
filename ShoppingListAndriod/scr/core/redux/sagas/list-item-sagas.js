@@ -15,6 +15,7 @@ export function* updateListItemSaga(action){
         yield call(reduxSagaFirebase.database.patch, SHOPPING_LIST_PATH+'/'+action.payload.id, entry);
     }
 
+    console.log("updating");
     yield put(updateListItemSuccessAction());
 }
 
@@ -41,7 +42,6 @@ export function* syncShoppingListSaga() {
         successActionCreator: fetchShoppingListSuccessAction
     });
 
-    console.log("sync saga");
 
     yield take(SYNC_SHOPPING_LIST_STOP);
 

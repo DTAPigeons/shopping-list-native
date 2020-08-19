@@ -10,7 +10,6 @@ export function fetchShoppingListAction(dummy={}){
 
 export function fetchShoppingListSuccessAction(shoppingListEntries){
     const shoppingList = createShoppingListCollectionFromDatabaseEntries(shoppingListEntries);
-    console.log("fetched");
     return{
         type: types.FETCH_SHOPPING_LIST_SUCCESS,
         payload: shoppingList
@@ -46,5 +45,12 @@ export function deleteShoppingListItemSuccesAction() {
 export function toggleEditAction(){
     return{
         type: types.TOGGLE_EDIT
+    }
+}
+
+export function toggleDeleteDialogAction(item){
+    return{
+        type: types.TOGGLE_DELETE_DIALOG,
+        payload: item
     }
 }

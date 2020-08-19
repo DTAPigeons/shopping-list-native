@@ -11,13 +11,16 @@ export function updateListItemReducer(state = initialState, action){
         case ITEM_SELECTED:
             return {...state, selectedItem : action.payload};
         case UPDATE_LIST_ITEM_SUCCESS:
+            console.log("Updating success");
             return {...state, updated: true}
         case SELECT_ITEM_FROM_DATA_BASE_SUCCESS:
+            console.log("reducer"+action.payload.name);
             return {...state, selectedItem: action.payload};
         case CLEARE_UPDATE_ITEM:
+            console.log("clearing");
             return {...initialState};
         case TOGGLE_CATALOG:
-            return {...state, catalogToggled: !state.catalogToggled}
+            return {...state, catalogToggled: !state.catalogToggled};
         default:
             return state;
     }

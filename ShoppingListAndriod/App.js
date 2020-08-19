@@ -25,6 +25,7 @@ import {Layout} from './scr/components/layout/Layout';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import  {UpdateShoppingItem } from './scr/components/shopping-items/update-shopping-item/UpdateShoppingItem';
+import  UpdateShoppingItemClass from './scr/components/shopping-items/update-shopping-item/UpdateShoppingItemClass';
 import {ShoppingList} from './scr/components/shopping-items/shopping-list/ShoppingList';
 
 const App = ()  => {
@@ -35,7 +36,7 @@ const App = ()  => {
     <NavigationContainer>
                 <Stack.Navigator initialRouteName="List">
                     <Stack.Screen name="List" component={ShoppingList} options={{ title: 'Shopping List' }}></Stack.Screen>
-                    <Stack.Screen name="Update" component={UpdateShoppingItem} options={{ title: 'Update Item' }}></Stack.Screen>
+                    <Stack.Screen name="Update" component={UpdateShoppingItemClass} options={{ title: 'Update Item' }}></Stack.Screen>
                 </Stack.Navigator>
     </NavigationContainer>
     </>
