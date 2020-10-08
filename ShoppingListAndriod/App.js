@@ -10,6 +10,7 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import {
   StyleSheet,
+  Text
 } from 'react-native';
 
 import {
@@ -31,17 +32,18 @@ import {ShoppingList} from './scr/components/shopping-items/shopping-list/Shoppi
 const App = ()  => {
   const Stack = createStackNavigator();
   return (
-    <Provider store={store}>
     <>
+    <Provider store={store}>
+
     <NavigationContainer>
                 <Stack.Navigator initialRouteName="List">
                     <Stack.Screen name="List" component={ShoppingList} options={{ title: 'Shopping List' }}></Stack.Screen>
                     <Stack.Screen name="Update" component={UpdateShoppingItemClass} options={{ title: 'Update Item' }}></Stack.Screen>
                 </Stack.Navigator>
     </NavigationContainer>
-    </>
+
     </Provider>
-    
+    </>
   );
 };
 
